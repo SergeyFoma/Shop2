@@ -1,0 +1,73 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% load goods_tags %}
+
+{% block sidecentr %}
+<div class="block_card">
+	{% for i in goods %}
+	
+		<div class="card_body">
+			
+			{% if i.image %}
+				<div class="text_discount">
+					<img src="{{i.image.url}}" alt="{{i.name}}"width='200px'height='200px'>
+					<div class="discout_p"><p>Скидка: {{i.discount}}</p></div>
+				</div>
+
+			{% else %}
+
+				<div class="text_discount">
+					<img src="{% static '../media/goods_images/Not found image.png' %}" alt="Not found image"width='200px'height='200px'>
+					<div class="discout_p"><p>Скидка: {{i.discount}}</p></div>
+				</div>
+			{% endif %}
+
+			<p><a href="{% url 'goods:products' i.slug %}">{{ i.name }}</a></p>
+			<p>{{i.description}}</p>
+
+			{% if i.discount %}
+				<p><s>{{i.price}}</s>$</p>
+				<p><strong>{{ i.sell_price }}</strong>$</p>
+				<span>Скидка: {{ i.discount }} %</span>
+			{% else %}
+				<p><strong>{{i.price}}</strong></p>
+			{% endif %}
+
+			<p>id: {{ i.display_id }}</p>
+			<a href=""><img src="../media/goods_images/korzina.png" alt="korzina" width='50px' height='50px'></a>
+		</div>
+	
+	{% endfor %}
+</div>
+	
+<!-- Пагинация -->
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center my-4">
+                            <div class="custom-shadow d-flex">
+                                {% for contact in page_obj %}
+								    {# Each "contact" is a Contact model object. #}
+								    {{ contact.full_name|upper }}<br>
+								    ...
+								{% endfor %}
+
+								<div class="pagination">
+								    <span class="step-links">
+								        {% if page_obj.has_previous %}
+								            <a href="?page=1">&laquo; first</a>
+								            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+								        {% endif %}
+
+								        <span class="current">
+								            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+								        </span>
+
+								        {% if page_obj.has_next %}
+								            <a href="?page={{ page_obj.next_page_number }}">next</a>
+								            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+								        {% endif %}
+								    </span>
+								</div>
+                            </div>
+                        </ul>
+                    </nav>
+{% endblock %}

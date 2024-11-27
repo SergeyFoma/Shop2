@@ -1,0 +1,12 @@
+{% extends 'shop/base.html' %}
+
+{% block sidecentr %}
+	
+{% if prod.image %}
+	<p>{{prod.image.url}}</p>
+	<p>{{prod.name}}</p>
+{% else %}
+	<p>{{prod.name}}</p>
+{% endif %}
+
+{% endblock %}
