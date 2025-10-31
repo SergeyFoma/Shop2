@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static './main/css/styles.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="menu">
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">Корзина</a></li>
+                <li id="lk"><a href="#">Личный кабинет | Выйти</a></li>
+            </ul>
+        </div>
+        {% block header %}
+        {% endblock %}
+    </div>
+    <div class="sidebar">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+</body>
+</html>
