@@ -15,9 +15,9 @@
                 <li><a href="{% url 'main:about' %}">О нас</a></li>
                 <li><a href="#">Каталог</a></li>
                 <li><a href="#">Корзина</a></li>
-                
+
                 {% if not request.user.is_authenticated %}
-                    <li id="lk"><a href="">Авторизация</a></li>
+                    <li id="lk"><a href="{% url "users:login" %}">Авторизация</a></li>
                 {% else %}
                     <li id="lk"><a href="#">Личный кабинет | Выйти</a></li>
                 {% endif %}
