@@ -17,9 +17,9 @@
                 <li><a href="#">Корзина</a></li>
 
                 {% if not request.user.is_authenticated %}
-                    <li id="lk"><a href="{% url "users:login" %}">Авторизация</a></li>
+                    <li id="lk"><a href="{% url "users:registration" %}">Войти</a></li>
                 {% else %}
-                    <li id="lk"><a href="#">Личный кабинет | Выйти</a></li>
+                    <li id="lk"><a href="{% url "users:profile" %}">Личный кабинет | Выйти</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -27,6 +27,7 @@
         {% endblock %}
     </div>
     <div class="sidebar">
+        <a href="{% url 'admin:index' %}"target="_blank">Admin</a>
         {% block content %}
         {% endblock %}
     </div>
