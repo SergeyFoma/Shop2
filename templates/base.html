@@ -33,7 +33,7 @@
             Catalog
             {% tag_catalog as tcat %}
             {% for cat_tag in tcat %}
-                <p><a href="#">{{cat_tag}}</a></p>
+                <p><a href="{% url "goods:catalog" slug_cat=cat_tag.slug %}">{{cat_tag.name}}</a></p>
             {% endfor %}
         </div>
         <a href="{% url 'admin:index' %}"target="_blank">Admin</a>
