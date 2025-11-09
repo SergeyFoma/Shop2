@@ -6,7 +6,7 @@
 
     {% for p in goods %}
     <p>{{p.slug}}</p>
-        <p>{{p.name}}</p>
+        <p><a href="{% url "goods:product" prod_slug=p.slug %}">{{p.name}}</a></p>
         <p>{{p.description}}</p>
         <p><img src="{{p.image.url}}"alt='#'></p>
         <p>{{p.price}}</p>
