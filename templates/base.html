@@ -18,9 +18,9 @@
                 <li><a href="#">Корзина</a></li>
 
                 {% if not request.user.is_authenticated %}
-                    <li id="lk"><a href="{% url "users:registration" %}">Войти</a></li>
+                    <li id="lk"><a href="{% url "users:login_user" %}">Войти</a></li>
                 {% else %}
-                    <li id="lk"><a href="{% url "users:profile" %}">Личный кабинет | Выйти</a></li>
+                    <li id="lk"><a href="{% url "users:profile" %}">Личный кабинет</a> | <a href="{% url "users:logout_user" %}">Выйти</a></li>
                 {% endif %}
             </ul>
         </div>
