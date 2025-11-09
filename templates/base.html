@@ -1,4 +1,5 @@
 {% load static %}
+{% load catalog_tags%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,16 @@
         {% endblock %}
     </div>
     <div class="sidebar">
+
+        <div class="modal_catalog">
+            Catalog
+            {% tag_catalog as tcat %}
+            {% for cat_tag in tcat %}
+                <p><a href="#">{{cat_tag}}</a></p>
+            {% endfor %}
+        </div>
         <a href="{% url 'admin:index' %}"target="_blank">Admin</a>
+
         {% block content %}
         {% endblock %}
     </div>
