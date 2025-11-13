@@ -1,17 +1,33 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from goods.models import Categories, Products
+from django.core.paginator import Paginator
 
-def catalog(request, slug_cat):
+def catalog(request, slug_cat=None):
     categ = Categories.objects.get(slug=slug_cat)
-    goods = Products.objects.filter(category = categ)
+    #goods = Products.objects.filter(category = categ)
 
     if slug_cat == 'all':
         goods = Products.objects.all()
+    else:
+        goods = Products.objects.filter(category = categ)
+
+    order_by = request.GET.get('order_by', None)
+    if order_by:
+        goods = goods.order_by(order_by)
+
+    discount = request.GET.get('discount')
+    if discount:
+        goods = goods.filter(discount__gt=0)
+
+    p = Paginator(goods, 2)
+    
+
     context = {
         'categ':categ,
         #'prod_categ':prod_categ,
         'goods':goods,
+        'slug_url':slug_cat,
     }
     return render(request, "goods/catalog.html", context)
 

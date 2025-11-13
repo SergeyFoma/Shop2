@@ -2,4 +2,20 @@
 {% load static %}
 
 {% block content %}
+
+    <form action=""method="post">
+        {% csrf_token %}
+        <input type="text"id='us_name'name='username'value='{{request.user.username}}'>
+        <label for="us_name">Username</label>
+
+        <input type="text"id='f_name'name='first_name'value="{% if request.user.first_name %}{{request.user.first_name}}{%else%}first_name{%endif%}">
+        <label for="f_name">First_name</label>
+
+        <input type="text"id='l_name'name='last_name'value=' {% if request.user.last_name %}{{request.user.last_name}}{%else%} last_name{%endif%}'>
+        <label for="l_name">Last_name</label>
+
+        <input type="email"id='email_user'name='email'value='{%if request.user.email%}{{request.user.email}}{%else%}email{%endif%}'>
+        <label for="email_user">Email</label>
+        <button type="submit">Обновить профиль</button>
+    </form>
 {% endblock content %}
