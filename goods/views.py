@@ -4,6 +4,7 @@ from goods.models import Categories, Products
 from django.core.paginator import Paginator
 
 def catalog(request, slug_cat=None):
+    page = request.GET.get("page",1)
     categ = Categories.objects.get(slug=slug_cat)
     #goods = Products.objects.filter(category = categ)
 
@@ -20,14 +21,16 @@ def catalog(request, slug_cat=None):
     if discount:
         goods = goods.filter(discount__gt=0)
 
-    p = Paginator(goods, 2)
-    
+    paginator = Paginator(goods, 2)
+    goods=paginator.page(int(page))
+
 
     context = {
         'categ':categ,
         #'prod_categ':prod_categ,
         'goods':goods,
         'slug_url':slug_cat,
+        'paginator':paginator,
     }
     return render(request, "goods/catalog.html", context)
 
