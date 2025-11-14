@@ -7,11 +7,13 @@ def catalog(request, slug_cat=None):
     page = request.GET.get("page",1)
     categ = Categories.objects.get(slug=slug_cat)
     #goods = Products.objects.filter(category = categ)
+    #query = request.GET.get('q', None)
 
     if slug_cat == 'all':
         goods = Products.objects.all()
     else:
         goods = Products.objects.filter(category = categ)
+    
 
     order_by = request.GET.get('order_by', None)
     if order_by:

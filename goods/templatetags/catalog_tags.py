@@ -13,6 +13,6 @@ def tag_catalog():
 def search_goods(context, **kwargs):
     query = context['request'].GET.dict()
     query.update(kwargs)
-    print(query)
-    print(kwargs)
+    #print(query)
+    #print(kwargs)
     return urlencode(query)
