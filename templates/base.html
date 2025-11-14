@@ -33,7 +33,8 @@
     <div class="sidebar">
 
         <div class="modal_catalog"id='mod_cat'>
-            <button onclick='mod()'>Каталог</button>
+            <button onclick='mod()'id='but1'>Каталог</button>
+            <button onclick='mod2()'id='but2'>Каталог2</button>
             <div class='m_cat'id='m_cat'style='display:none;'>
                 {% tag_catalog as tcat %}
                 {% for cat_tag in tcat %}
@@ -56,9 +57,18 @@
 
     <script>
         //document.getElementById('m_cat').onclick='mod';
+        document.getElementById('but2').style.display='none';
         
         function mod() {
             document.getElementById('m_cat').style.display="block";
+            document.getElementById('but2').style.display='block';
+            document.getElementById('but1').style.display='none';
+        }
+
+        function mod2(){
+            document.getElementById('m_cat').style.display="none";
+            document.getElementById('but2').style.display='none';
+            document.getElementById('but1').style.display='block';
         }
     </script>
 </body>
