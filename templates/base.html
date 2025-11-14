@@ -10,6 +10,9 @@
 </head>
 <body>
     <div class="header">
+        <div class='heading'>
+            <h1>Eshop</h1>
+        </div>
         <div class="menu">
             <ul>
                 <li><a href="{% url 'main:index' %}">Главная</a></li>
@@ -29,14 +32,19 @@
     </div>
     <div class="sidebar">
 
-        <div class="modal_catalog">
-            Catalog
-            {% tag_catalog as tcat %}
-            {% for cat_tag in tcat %}
-                <p><a href="{% url "goods:catalog" slug_cat=cat_tag.slug %}">{{cat_tag.name}}</a></p>
-            {% endfor %}
+        <div class="modal_catalog"id='mod_cat'>
+            <button onclick='mod()'>Каталог</button>
+            <div class='m_cat'id='m_cat'style='display:none;'>
+                {% tag_catalog as tcat %}
+                {% for cat_tag in tcat %}
+                    <p><a href="{% url "goods:catalog" slug_cat=cat_tag.slug %}">{{cat_tag.name}}</a></p>
+                {% endfor %}
+            </div>
         </div>
-        <a href="{% url 'admin:index' %}"target="_blank">Admin</a>
+
+        {% if request.user.is_staff %}
+            <a href="{% url 'admin:index' %}"target="_blank">Admin</a>
+        {% endif %}
 
         {% block content %}
         {% endblock %}
@@ -45,5 +53,13 @@
         {% block footer %}
         {% endblock %}
     </div>
+
+    <script>
+        //document.getElementById('m_cat').onclick='mod';
+        
+        function mod() {
+            document.getElementById('m_cat').style.display="block";
+        }
+    </script>
 </body>
 </html>
