@@ -8,14 +8,14 @@
 <!--фильтрация товаров-->
 <div class="form_filters"
     <form action=""method='get'>
-        <input type="checkbox"id='discount_goods'name='discount'value='discount'{%if request.GET.discount == 'discount' %}checked{%endif%}>
-        <label for="discount_goods">Товары по акции</label>
+        <input type="checkbox"class="input_filter"id='discount_goods'name='discount'value='discount'{%if request.GET.discount == 'discount' %}checked{%endif%}>
+        <label for="discount_goods"class="label_input_filter">Товары по акции</label>
             
-        <input type="radio"id='order_by_goods'name='order_by'value='-price'{%if request.GET.order_by == '-price' %}checked{%endif%}>
-        <label for="order_by_goods">От дорогих к дешёвым</label>
+        <input type="radio"class="input_filter"id='order_by_goods'name='order_by'value='-price'{%if request.GET.order_by == '-price' %}checked{%endif%}>
+        <label for="order_by_goods"class="label_input_filter">От дорогих к дешёвым</label>
 
-        <input type="radio"id='order_by_goods'name='order_by'value='price'{%if request.GET.order_by == 'price' %}checked{%endif%}>
-        <label for="order_by_goods">От дешёвых к дорогим</label>
+        <input type="radio"class="input_filter"id='order_by_goods'name='order_by'value='price'{%if request.GET.order_by == 'price' %}checked{%endif%}>
+        <label for="order_by_goods"class="label_input_filter">От дешёвых к дорогим</label>
 
         <button type='submit'>Применить</button>
 
