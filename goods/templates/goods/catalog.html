@@ -21,21 +21,27 @@
 
     </form>
 </div>
-    <h2>{{categ.name}}</h2>
 
-    {% for p in goods %}
-    <p>{{p.slug}}</p>
-        <p><a href="{% url "goods:product" prod_slug=p.slug %}">{{p.name}}</a></p>
-        <p>{{p.description}}</p>
-        {% if p.image %}
-            <p><img src="{{p.image.url}}"alt='#'></p>
-        {% else %}
-            <p><img src="{% static '/main/image/default.png' %}" alt=""></p>
-        {% endif %}
-        <p>{{p.price}}</p>
-        <p>{{p.discount}}%</p>
-        <p>{{p.quantity}}шт</p>
-    {% endfor %}
+<div class="products">
+    <h2>{{categ.name}}</h2>
+    <div class="products_catalog">
+        {% for p in goods %}
+            <div class="products_cart">
+                <a href="{% url 'goods:product' prod_slug=p.slug %}">{{p.name}}</a>
+                
+                {% if p.image %}
+                    <p><img src="{{p.image.url}}"alt='#'></p>
+                {% else %}
+                    <p><img src="{% static '/main/image/default.png' %}" alt=""></p>
+                {% endif %}
+                <p>{{p.description}}</p>
+                <p>{{p.price}}</p>
+                <p>{{p.discount}}%</p>
+                <p>{{p.quantity}}шт</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
 
 <div class="pagination">
@@ -59,6 +65,6 @@
         {% endif %}
     </span>
 </div>
-<p>{{request.GET.dict}}</p>
+{%comment%}<p>{{request.GET.dict}}</p>{%endcomment%}
 
 {% endblock content %}

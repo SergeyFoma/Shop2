@@ -94,12 +94,39 @@ li {
 .form_filters {
     margin-right: 50px;
     margin-left: 50px;
-    /*background-color: rgba(255, 255, 255, 1.0);*/
+    margin-bottom: 50px;
+    background-color: rgba(255, 255, 255, 1.0);
+}
+.products {
+    margin-bottom: 50px;
+}
+.products h2{
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 1.0);
+}
+.products_catalog {
+    display: flex;
+    justify-content: space-around;
+}
+
+.products_cart {
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 1.0);
 }
 #discount_goods {
     width: 20px;
     height: 20px;
     background-color: rgba(255, 255, 255, 1.0);
+}
+
+
+.pagination {
+    background-color: rgba(255, 255, 255, 1.0);
+    text-align: center;
 }
 
 

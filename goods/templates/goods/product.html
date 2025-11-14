@@ -1,5 +1,11 @@
+{% load static %}
+
 <p>{{prod}}</p>
-<p><img src="{{prod.image.url}}"alt=""></p>
+{% if prod.image %}
+    <p><img src="{{prod.image.url}}"alt=""></p>
+{% else %}
+    <p><img src="{% static '/main/image/default.png' %}" alt=""></p>
+{% endif %}
 <p>{{prod.description}}</p>
 <p>{{prod.price}}</p>
 <p>{{prod.discount}}</p>
