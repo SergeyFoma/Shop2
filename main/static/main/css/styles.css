@@ -13,7 +13,7 @@ body {
 
 .header {
     width: 100%;
-    height: 200px;
+    /*height: 200px;*/
     /*background-color: aqua;*/
     position: relative;
     /*text-align: center;*/
@@ -21,36 +21,67 @@ body {
 }
 .heading {
     width: 100%;
-    height: 50px;
+    /*height: 50px;*/
     text-align: center;
     padding-top: 20px;
+    font-size: 90px;
+    margin-bottom: 50px;
 }
 .menu {
     position: absolute;
-    bottom: 0;
+    /*bottom: 80px;*/
     width: 100%;
     /*text-align: center;*/
     /*background-color: rgba(255, 255, 255, 0.5);*/
+    
 }
 .menu a {
     text-decoration: none;
     color:black;
 }
-
+.menu_b:hover {
+    cursor: pointer;
+}
+.m_cat a:hover {
+    color: rgb(38, 8, 206);
+}
+#but1 {
+    /*background-color: rgba(255, 255, 255, 1.0);*/
+    background-color: rgb(57, 57, 57);
+    padding: 2px 15px;
+    color: #fff;
+    /*border-radius: 10px;*/
+} 
+#but2 {
+    background-color: rgb(57, 57, 57);
+    padding: 2px 15px;
+    color: #fff;
+} 
 
 li {
     float:left;
     list-style-type: none;
+}
+.modal_catalog {
+    margin-left: 50px;
+    background-color: #fff;
+    /*border-radius: 10px;*/
+}
+.modal_catalog2 {
     /*margin-right: 20px;*/
     margin-left: 50px;
     background-color: rgba(255, 255, 255, 1.0);
     padding: 2px 15px;
     border-radius: 10px;
 }
+.m_cat {
+    padding: 5px;
+}
 #lk {
     float:right;
-    /*background-color: rgba(255, 255, 255, 0.5);*/
-    /*padding: 2px 15px;*/
+    background-color: rgba(255, 255, 255, 1.0);
+    padding: 2px 15px;
+    border-radius: 10px;
     margin-right: 50px;
 }
 
@@ -58,6 +89,17 @@ li {
     width: 100%;
     height: 800px;
     /*background-color: rgb(209, 248, 248);*/
+    padding-top: 50px;
+}
+.form_filters {
+    margin-right: 50px;
+    margin-left: 50px;
+    /*background-color: rgba(255, 255, 255, 1.0);*/
+}
+#discount_goods {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 1.0);
 }
 
 

@@ -6,27 +6,32 @@
 {% block content %}
 
 <!--фильтрация товаров-->
+<div class="form_filters"
+    <form action=""method='get'>
+        <input type="checkbox"id='discount_goods'name='discount'value='discount'{%if request.GET.discount == 'discount' %}checked{%endif%}>
+        <label for="discount_goods">Товары по акции</label>
+            
+        <input type="radio"id='order_by_goods'name='order_by'value='-price'{%if request.GET.order_by == '-price' %}checked{%endif%}>
+        <label for="order_by_goods">От дорогих к дешёвым</label>
 
-<form action=""method='get'>
-    <input type="checkbox"id='discount_goods'name='discount'value='discount'{%if request.GET.discount == 'discount' %}checked{%endif%}>
-    <label for="discount_goods">Товары по акции</label>
-        
-    <input type="radio"id='order_by_goods'name='order_by'value='-price'{%if request.GET.order_by == '-price' %}checked{%endif%}>
-    <label for="order_by_goods">От дорогих к дешёвым</label>
+        <input type="radio"id='order_by_goods'name='order_by'value='price'{%if request.GET.order_by == 'price' %}checked{%endif%}>
+        <label for="order_by_goods">От дешёвых к дорогим</label>
 
-    <input type="radio"id='order_by_goods'name='order_by'value='price'{%if request.GET.order_by == 'price' %}checked{%endif%}>
-    <label for="order_by_goods">От дешёвых к дорогим</label>
+        <button type='submit'>Применить</button>
 
-    <button type='submit'>Применить</button>
-
-</form>
+    </form>
+</div>
     <h2>{{categ.name}}</h2>
 
     {% for p in goods %}
     <p>{{p.slug}}</p>
         <p><a href="{% url "goods:product" prod_slug=p.slug %}">{{p.name}}</a></p>
         <p>{{p.description}}</p>
-        <p><img src="{{p.image.url}}"alt='#'></p>
+        {% if p.image %}
+            <p><img src="{{p.image.url}}"alt='#'></p>
+        {% else %}
+            <p><img src="{% static '/main/image/default.png' %}" alt=""></p>
+        {% endif %}
         <p>{{p.price}}</p>
         <p>{{p.discount}}%</p>
         <p>{{p.quantity}}шт</p>
