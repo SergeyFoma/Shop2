@@ -58,7 +58,7 @@
     </div>
 
     <!--Модальнле окно Каталог-->
-    <script>
+    {% comment %} <script>
         //document.getElementById('m_cat').onclick='mod';
         document.getElementById('but2').style.display='none';
         
@@ -73,6 +73,7 @@
             document.getElementById('but2').style.display='none';
             document.getElementById('but1').style.display='block';
         }
-    </script>
+    </script> {% endcomment %}
+    <script src="{% static './main/js/modal_catalog.js' %}"></script>
 </body>
 </html>
