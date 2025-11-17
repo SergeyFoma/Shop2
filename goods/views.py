@@ -2,15 +2,18 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from goods.models import Categories, Products
 from django.core.paginator import Paginator
+from goods.utils import search_goods
 
 def catalog(request, slug_cat=None):
     page = request.GET.get("page",1)
     categ = Categories.objects.get(slug=slug_cat)
     #goods = Products.objects.filter(category = categ)
-    #query = request.GET.get('q', None)
+    query = request.GET.get('q', None)
 
     if slug_cat == 'all':
         goods = Products.objects.all()
+    elif query:
+        goods = search_goods(query)
     else:
         goods = Products.objects.filter(category = categ)
     
