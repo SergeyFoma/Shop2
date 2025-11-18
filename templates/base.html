@@ -17,7 +17,7 @@
             <ul>
                 <li class='modal_catalog2'><a href="{% url 'main:index' %}"class='menu_a'>Главная</a></li>
                 <li class='modal_catalog2'><a href="{% url 'main:about' %}"class='menu_a'>О нас</a></li>
-                <li class='modal_catalog2'><a href="#"class='menu_a'>Корзина</a></li>
+                <li class='modal_catalog2'><a href="{% url "users:users_cart" %}"class='menu_a'>Корзина</a></li>
 <!--<li><a href="#"class='menu_a'>Каталог</a></li>-->
                 <li class="modal_catalog"id='mod_cat'>
                     <p onclick='mod()'id='but1'class='menu_b'>Каталог</p>

@@ -25,5 +25,10 @@ class Products(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = "Продукты"
 
+    def sell_price(self):
+        if self.discount:
+            return round(self.price - self.price*self.discount/100,2)
+        return self.price
+
     def __str__(self):
         return self.name
