@@ -46,7 +46,7 @@
                 <p>{{p.price}}</p>
                 <p>{{p.discount}}%</p>
                 <p>{{p.quantity}}шт</p>
-                <p>Добавить товар в корзину</p>
+                <p><a href="{% url "carts:carts_add" p.slug %}">Добавить товар в корзину</a></p>
             </div>
         {% endfor %}
     </div>
