@@ -1,6 +1,18 @@
+{% load carts_tags %}
+
+{% user_carts request as carts %}
 <h2>Корзина</h2>
-<h3>Товар</h3>
-<button type='button'>-</button>
-<p>0</p>
-<button type='button'>+</button>
+
+{% for cart in carts %}
+    <h3>{{cart.product.name}}</h3>
+    <button type='button'>-</button>
+    <p><input type='text'value='{{cart.quantity}}'readonly></p>
+    <button type='button'>+</button>
+    <p>{{cart.product.sell_price}} = </p>
+    <p>{{cart.product_price}}$</p>
+    {% endfor %}
+    <div class="">
+        <p>И того:<strong>{{carts.total_quantity}}</strong>товар на сумму</p>
+        <p>{{carts.total_price}} $</p>
+    </div>
 
