@@ -6,13 +6,19 @@
 {% for cart in carts %}
     <h3>{{cart.product.name}}</h3>
     <button type='button'>-</button>
-    <p><input type='text'value='{{cart.quantity}}'readonly></p>
+    <input type='text'value='{{cart.quantity}}'readonly style='width:50px;'>
     <button type='button'>+</button>
-    <p>{{cart.product.sell_price}} = </p>
-    <p>{{cart.product_price}}$</p>
+    <p>{{cart.product.sell_price}} * {{cart.quantity}} = {{cart.product_price}}$</p>
+    <p><a href='{% url "carts:carts_remove" cart.id%}'>Удалить товар из корзины</a></p>
     {% endfor %}
     <div class="">
         <p>И того:<strong>{{carts.total_quantity}}</strong>товар на сумму</p>
         <p>{{carts.total_price}} $</p>
     </div>
+    {% if carts %}
+        <div class="">
+            <a href="#">Оформить заказ</a>
+        </div>
+    {% endif %}
+
 
