@@ -1,15 +1,24 @@
 {% load carts_tags %}
 
 {% user_carts request as carts %}
-<h2>Корзина</h2>
+<h2 id="h2js">Корзина</h2>
+
 
 {% for cart in carts %}
     <h3>{{cart.product.name}}</h3>
-    <button type='button'>-</button>
-    <input type='text'value='{{cart.quantity}}'readonly style='width:50px;'>
-    <button type='button'>+</button>
+
+    
+        {% csrf_token %}
+        <a href='{% url "carts:carts_change" product_id=cart.id%}'style='width:30px;height:30px;border:1px solid black;text-decoration:none;padding: 0px 5px;'>-</a>
+        <input type='text'value='{{cart.quantity}}'readonly style='width:50px;'id='input_cart'name='cart_quantity'>
+        <a href='{% url "carts:carts_change_plus" product_id=cart.id%}'style='width:30px;height:30px;border:1px solid black;text-decoration:none;padding: 0px 5px;'>+</a>
+    
+    
+
     <p>{{cart.product.sell_price}} * {{cart.quantity}} = {{cart.product_price}}$</p>
     <p><a href='{% url "carts:carts_remove" cart.id%}'>Удалить товар из корзины</a></p>
+    
+
     {% endfor %}
     <div class="">
         <p>И того:<strong>{{carts.total_quantity}}</strong>товар на сумму</p>
@@ -20,5 +29,7 @@
             <a href="#">Оформить заказ</a>
         </div>
     {% endif %}
+
+   
 
 
